@@ -3,6 +3,8 @@ shell scripts for restic to simplify backup/check/restore and other operations a
 
 These are bash scripts designed to be run under Linux, so I offer no support for Windows or Mac based systems although feel free to modify these scripts for your own purposes! I am not opposed to anyone posting issues or pull requests or just comments or questions!
 
+I exclusively run restic with Backblaze B2 and use the B2 API as opposed to the S3 API because when I originally set these up Backblaze did not offer an S3 API. If I could do it again today I would most definitely use the S3 API (but I'm sure it would be fairly trivial to adapt).
+
 The main script is `restic_backup.sh` which you will probably want to schedule with cron. Most other scripts are to make maintenance/troubleshooting tasks easier. You can optionally schedule `restic_check.sh` and `restic_forgetandprune_bypolicy.sh`.
 
 # Getting Started
