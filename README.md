@@ -21,8 +21,16 @@ The main script is `restic_backup.sh` which you will probably want to schedule w
   - Update `RESTIC_CACHE_DIR` based on where you want to store the cache on your system (I use the cache subdirectory)
 - Edit restic_excludefiles.txt and at a minimum remove the example directories that I provide
 - Manually run restic_backup.sh to make sure backup is working. I don't know what happens if you are starting a brand new restic repository since this script attempts to unlock the restic repo before running the backup, but if it fails then you would need to manually run restic backup for the first time to create the initial snapshot.
-- After you verity restic_backup.sh works, you can schedule cron to run the backup periodically. See `./cron/` for an example of how I schedule my backups to run twice daily at 6:30AM and 6:30PM.
-  - I also configured cron to output the logs to a file in the logs subdirectory, which you can see how that is done from the cron example.
+
+# Scheduling Cron Jobs
+- After you verity restic_backup.sh works, you can schedule cron to run the backup periodically.
 - I also run restic_check.sh once a week, but due to memory issues I've had in the past, I have a root cron job that reboots the machine 10 minutes before restic_check.sh is scheduled to run. Feel free to modify this schedule based on your needs.
+```
+# Run restic backup at 6:30 and 18:30 every day
+30 6,18 * * * sh /home/user/restic-scripts/restic_backup.sh >> /home/user/restic-scripts/logs/restic_backup.log 2>&1
+
+# Run restic check every Thursday at 14:00 (optionally schedule a system reboot in root's crontab 10 minutes before this runs to free up system resources)
+0 14 * * 4 sh /home/user/restic-scripts/restic_check.sh >> /home/user/restic-scripts/logs/restic_backup.log 2>&1
+```
 
 Don't forget to monitor the logs periodically and take any necessary action. All the other scripts are meant to be run manually and simplify the maintenance tasks you might need to perform on your restic backup repository.
