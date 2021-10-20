@@ -9,6 +9,7 @@ The main script is `restic_backup.sh` which you will probably want to schedule w
 
 # Getting Started
 - Make sure your restic machine has a sufficient amount of RAM and CPU power depending on your backup size and number of files. Also make sure you have enough local filesystem storage for the restic cache (see `RESTIC_CACHE_DIR` below).
+- Install restic. I prefer to just download the latest stable binary from Github: [https://github.com/restic/restic/releases/](https://github.com/restic/restic/releases/) but you could also use your distro's package manager
 - Clone this repo to the machine you will be using to run restic
 - Mount any network directories if you want to back them up (for example a NAS share). I mount mine into the sources directory but they can be anywhere.
   - Update `/etc/fstab` to mount these directories automatically on reboot
