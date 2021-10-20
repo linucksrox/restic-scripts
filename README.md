@@ -7,6 +7,9 @@ I exclusively run restic with Backblaze B2 and use the B2 API as opposed to the 
 
 The main script is `restic_backup.sh` which you will probably want to schedule with cron. Most other scripts are to make maintenance/troubleshooting tasks easier. You can optionally schedule `restic_check.sh` and `restic_forgetandprune_bypolicy.sh`.
 
+# More Documentation
+[Check out my blog post about how I use these scripts and some of the use cases](https://blog.dalydays.com/post/2021-10-20-using-restic-with-backblaze-b2/)
+
 # Getting Started
 - Make sure your restic machine has a sufficient amount of RAM and CPU power depending on your backup size and number of files. Also make sure you have enough local filesystem storage for the restic cache (see `RESTIC_CACHE_DIR` below).
 - Install restic. I prefer to just download the latest stable binary from Github: [https://github.com/restic/restic/releases/](https://github.com/restic/restic/releases/) but you could also use your distro's package manager
