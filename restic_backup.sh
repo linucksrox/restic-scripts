@@ -8,7 +8,7 @@ echo "-"
 echo "Running scheduled backup ($(date))..."
 echo "---------------------------"
 
-restic backup $RESTIC_INCLUDE_PATHS --exclude-file=$RESTIC_EXCLUDE_FILE_PATH -o b2.connections=$B2_CONNECTIONS
+restic -o b2.connections=$B2_CONNECTIONS backup --exclude-file=$RESTIC_EXCLUDE_FILE_PATH $RESTIC_INCLUDE_PATHS
 
 echo ""
 echo "Finished scheduled backup $(date)"
